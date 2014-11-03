@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jromer.flowerin.app.UserInfoFragment"
+    android:orientation="vertical"
+    android:background="@drawable/pink_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView android:id="@+id/first_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Name"/>
+    <EditText android:id="@+id/first_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/last_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Last Name"/>
+    <EditText android:id="@+id/last_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/address_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"/>
+    <EditText android:id="@+id/address_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/city_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="City"/>
+    <EditText android:id="@+id/city_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/state_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="State"/>
+    <EditText android:id="@+id/state_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/zip_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zip Code"/>
+    <EditText android:id="@+id/zip_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/phone_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"/>
+    <EditText android:id="@+id/phone_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/email_text"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Email"/>
+    <EditText android:id="@+id/email_edit"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+    </LinearLayout>
+    </ScrollView>
+
+    <Button android:id="@+id/continue_button"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Continue"/>
+
+</LinearLayout>
