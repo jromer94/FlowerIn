@@ -3,6 +3,8 @@ package com.jromer.flowerin.app;
 import android.net.Uri;
 import android.util.Log;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,8 +14,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by josh on 9/25/14.
@@ -27,6 +32,30 @@ public class MenuFetchr {
     private static final String RESTAURANT_ID = "24605";
     private static final String GET_MENU = "rd";
     private static final String RID = "24067";
+    private static final String ORDER = "o";
+    private static final String TRAY = "tray";
+    private static final String TIP = "tip";
+    private static final String DELIVERY_DATE = "delivery_date";
+    private static final String DELIVERY_TIME = "delivery_time";
+    private static final String FIRST_NAME = "first_name";
+    private static final String LAST_NAME = "last_name";
+    private static final String ADDRESS = "addr";
+    private static final String CITY = "city";
+    private static final String STATE = "state";
+    private static final String ZIP = "zip";
+    private static final String PHONE = "phone";
+    private static final String EMAIL = "email";
+    private static final String CARD_NAME = "card_name";
+    private static final String CARD_NUMBER = "card_number";
+    private static final String CARD_CVC = "card_cvc";
+    private static final String CARD_EXPIRE = "card_expiry";
+    private static final String CARD_ADDR = "card_bill_addr";
+    private static final String CARD_ADDR2 = "card_bill_addr2";
+    private static final String CARD_CITY = "card_bill_city";
+    private static final String CARD_STATE = "card_bill_state";
+    private static final String CARD_ZIP = "card_bill_zip";
+    private static final String CARD_PHONE = "card_bill_phone";
+
 
     byte[] getUrlBytes(String urlSpec) throws IOException {
 
@@ -97,6 +126,40 @@ public class MenuFetchr {
         menu.setCategories(categories);
 
         return menu;
+
+    }
+
+    public Boolean placeOrdr(String tray, String tip, String deliveryDate, String deliveryTime, String firstName, String lastName, String addr, String city, String state, String zip, String phone, String email, String cardName, String cardNumber, String cardCvc, String cardExpire, String cardAddr, String cardAddr2, String cardCity, String cardState, String cardZip, String cardPhone) throws IOException {
+        String urlString = Uri.parse(ENDPOINT).buildUpon().appendPath(ORDER).appendPath(RID).build().toString();
+        Map<String, String> data  = new HashMap<String, String>();
+        data.put(TRAY, tray);
+        data.put(TIP, tip);
+        data.put(DELIVERY_DATE, deliveryDate);
+        data.put(DELIVERY_TIME, deliveryTime);
+        data.put(FIRST_NAME, firstName);
+        data.put(LAST_NAME, lastName);
+        data.put(ADDRESS, addr);
+        data.put(CITY, city);
+        data.put(STATE, state);
+        data.put(ZIP, zip);
+        data.put(PHONE, phone);
+        data.put(EMAIL, email);
+        data.put(CARD_NAME, cardName);
+        data.put(CARD_NUMBER, cardNumber);
+        data.put(CARD_CVC, cardCvc);
+        data.put(CARD_EXPIRE, cardExpire);
+        data.put(CARD_ADDR, cardAddr);
+        data.put(CARD_CITY, cardCity);
+        data.put(CARD_STATE, cardState);
+        data.put(CARD_ZIP, cardZip);
+        data.put(CARD_PHONE, cardPhone);
+
+        int response = HttpRequest.post(urlString).header("X-NAAMA-CLIENT-AUTHENTICATION",  "id=\"v-4qPjiF9t-YhhiWwREEdQHK6UKp95pz63P4RyRsbXI\", version=\"1\"")
+                .form(data)
+                .code();
+        Log.i("response: ", "" + response);
+
+        return true;
 
     }
 
